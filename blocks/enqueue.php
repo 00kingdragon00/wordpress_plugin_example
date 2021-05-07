@@ -14,7 +14,6 @@ function r_enqueue_block_editor_assets()
 }
 
 function r_enqueue_block_assets() {
-    $ver            = JU_DEV_MODE ? time() : false;
     wp_register_style(
         'r_blocks',
         plugins_url('/blocks/dist/block-main.css', RECIPE_PLUGIN_URL),
