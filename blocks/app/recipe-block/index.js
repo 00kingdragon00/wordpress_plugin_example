@@ -1,11 +1,13 @@
 // wp.
+
+import block_icons from "../icons";
+import './editor.scss'
+
+
 const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 const { InspectorControls } = wp.editor;
 const { PanelBody, PanelRow, TextControl, SelectControl } = wp.components;
-
-import block_icons from "../icons";
-
 registerBlockType("test/recipe", {
   title: __("Recipe", "recipe"),
   description: __("Provides a short summary of a recipe", "recipe"),
@@ -113,23 +115,23 @@ registerBlockType("test/recipe", {
       <div className={props.className}>
         <ul class="list-unstyled">
           <li>
-            <strong>{__("Ingredients:", "recipe")}</strong>{" "}
+            <strong>{__("Ingredients:", "recipe")}</strong>
             <span className="ingredients-ph">{props.attributes.ingredients}</span>
           </li>
           <li>
-            <strong>{__("Cooking Time:", "recipe")} </strong>{" "}
+            <strong>{__("Cooking Time:", "recipe")} </strong>
             <span className="cooking-time-ph">{props.attributes.cooking_time}</span>
           </li>
           <li>
-            <strong>{__("Utensils:", "recipe")} </strong>{" "}
-            <span className="utensils">{props.attributes.utensils}</span>
+            <strong>{__("Utensils:", "recipe")} </strong>
+            <span className="utensils-ph">{props.attributes.utensils}</span>
           </li>
           <li>
             <strong>{__("Cooking Experience:", "recipe")} </strong>
             <span className="cooking-experience-ph">{props.attributes.cooking_experience}</span>
           </li>
           <li>
-            <strong>{__("Meal Type:", "recipe")} </strong>{" "}
+            <strong>{__("Meal Type:", "recipe")} </strong>
             <span className="meal-type-ph">{props.attributes.meal_type}</span>
           </li>
         </ul>
@@ -138,26 +140,26 @@ registerBlockType("test/recipe", {
   },
   save: (props) => {
     return (
-        <div >
+      <div>
         <ul class="list-unstyled">
           <li>
-            <strong>{__("Ingredients:", "recipe")}</strong>{" "}
+            <strong>{__("Ingredients:", "recipe")}</strong>
             <span className="ingredients-ph">{props.attributes.ingredients}</span>
           </li>
           <li>
-            <strong>{__("Cooking Time:", "recipe")} </strong>{" "}
+            <strong>{__("Cooking Time:", "recipe")} </strong>
             <span className="cooking-time-ph">{props.attributes.cooking_time}</span>
           </li>
           <li>
-            <strong>{__("Utensils:", "recipe")} </strong>{" "}
-            <span className="utensils">{props.attributes.utensils}</span>
+            <strong>{__("Utensils:", "recipe")} </strong>
+            <span className="utensils-ph">{props.attributes.utensils}</span>
           </li>
           <li>
             <strong>{__("Cooking Experience:", "recipe")} </strong>
             <span className="cooking-experience-ph">{props.attributes.cooking_experience}</span>
           </li>
           <li>
-            <strong>{__("Meal Type:", "recipe")} </strong>{" "}
+            <strong>{__("Meal Type:", "recipe")} </strong>
             <span className="meal-type-ph">{props.attributes.meal_type}</span>
           </li>
         </ul>

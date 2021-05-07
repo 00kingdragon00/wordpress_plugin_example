@@ -1,5 +1,11 @@
 const path = require("path");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+// Extract CSS for Gutenberg Editor
+const editor_css_plugin = new MiniCssExtractPlugin({
+  filename: 'block-[name].css'
+});
 
 module.exports = {
   entry: "./app/index.js",
@@ -9,7 +15,7 @@ module.exports = {
   },
   mode: "development",
   watch: true,
-  devtool: "cheap-eval-source-map",
+  devtool: false,
   module: {
     rules: [
       {
@@ -17,6 +23,17 @@ module.exports = {
         exclude: /(node_modules)/,
         use: "babel-loader",
       },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
+      }
     ],
   },
+  plugins: [
+    editor_css_plugin
+  ]
 };

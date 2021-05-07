@@ -12,3 +12,13 @@ function r_enqueue_block_editor_assets()
 
     wp_enqueue_script('r_blocks_bundle');
 }
+
+function r_enqueue_block_assets() {
+    $ver            = JU_DEV_MODE ? time() : false;
+    wp_register_style(
+        'r_blocks',
+        plugins_url('/blocks/dist/block-main.css', RECIPE_PLUGIN_URL),
+    );
+
+    wp_enqueue_style('r_blocks');
+}
