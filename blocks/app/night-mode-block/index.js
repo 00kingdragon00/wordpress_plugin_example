@@ -5,8 +5,8 @@ import "./editor.scss";
 
 const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
-const { BlockControls } = wp.editor;
-const { ToolbarGroup, ToolbarButton, Tooltip } = wp.components;
+const { BlockControls, InspectorControls } = wp.editor;
+const { ToolbarGroup, ToolbarButton, Tooltip, PanelBody, PanelRow, FormToggle } = wp.components;
 registerBlockType("test/night-mode", {
   title: __("Night Mode", "recipe"),
   description: __("Content with night mode.", "recipe"),
@@ -19,7 +19,22 @@ registerBlockType("test/night-mode", {
     },
   },
   edit: (props) => {
-    return (
+    const toggleNightMode = () => {
+      props.setAttributes({ night_mode: !props.attributes.night_mode });
+    };
+    return [
+      <InspectorControls>
+        <PanelBody title={__("Night Mode", "recipe")}>
+          <PanelRow>
+              <label htmlFor="test-recipe-night-mode">{__('Night Mode', 'recipe')}</label>
+            <FormToggle
+              id="test-recipe-night-mode"
+              checked={props.attributes.night_mode}
+              onChange={toggleNightMode}
+            ></FormToggle>
+          </PanelRow>
+        </PanelBody>
+      </InspectorControls>,
       <div className={props.className}>
         <BlockControls>
           <ToolbarGroup>
@@ -28,23 +43,25 @@ registerBlockType("test/night-mode", {
                 className={classnames("component-icon-button", "component-toolbar__control", {
                   "is-active": props.attributes.night_mode,
                 })}
-                onClick={(new_val) => {
-                  props.setAttributes({ night_mode: !props.attributes.night_mode });
-                }}
+                onClick={toggleNightMode}
               >
                 {btn_icon}
               </ToolbarButton>
             </Tooltip>
           </ToolbarGroup>
         </BlockControls>
-        <div className={ classnames("content-example", {'night': props.attributes.night_mode})}>This is an example of a block with night mode.</div>
-      </div>
-    );
+        <div className={classnames("content-example", { night: props.attributes.night_mode })}>
+          This is an example of a block with night mode.
+        </div>
+      </div>,
+    ];
   },
   save: (props) => {
     return (
       <div>
-        <div className={ classnames("content-example", {'night': props.attributes.night_mode})}>This is an example of a block with night mode.</div>
+        <div className={classnames("content-example", { night: props.attributes.night_mode })}>
+          This is an example of a block with night mode.
+        </div>
       </div>
     );
   },
