@@ -33,6 +33,8 @@ include('includes/cron.php');
 include('includes/utility.php');
 include('includes/deactivate.php');
 include('includes/shortcodes/creator.php');
+include('includes/shortcodes/auth-form.php');
+
 // Hook
 register_activation_hook(__FILE__, 'r_activate_plugin');
 register_deactivation_hook(__FILE__, 'r_deactivate_plugin');
@@ -49,5 +51,7 @@ add_action('enqueue_block_editor_assets', 'r_enqueue_block_editor_assets');
 add_action('enqueue_block_assets', 'r_enqueue_block_assets');
 add_action('widgets_init', 'r_widgets_init');
 add_action('r_daily_recipe_hook', 'r_generate_daily_recipe');
+
 // Shortcodes
 add_shortcode('recipe_creator', 'r_recipe_creator_shortcode');
+add_shortcode('recipe_auth_form', 'r_recipe_auth_form_shortcode');
