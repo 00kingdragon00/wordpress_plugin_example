@@ -40,6 +40,9 @@ include('includes/shortcodes/auth-form.php');
 include('includes/shortcodes/auth-form-alt.php');
 include('includes/admin/dashboard-widgets.php');
 include('includes/admin/menus.php');
+include('includes/admin/options-page.php');
+include('process/save-options.php');
+
  
 // Hook
 register_activation_hook(__FILE__, 'r_activate_plugin');
